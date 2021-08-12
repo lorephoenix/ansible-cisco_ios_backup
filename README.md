@@ -1,7 +1,7 @@
 cisco_ios_backup
 =========
 
-An Ansible role to backup the configuration from IOS/IOS-XE software of Cisco network devices.
+An Ansible role to backup the configuration of Cisco network devices that runs on IOS/IOS-XE software.
 ```
     cd roles
     git clone https://github.com/lorephoenix/ansible-cisco_ios_backup.git cisco_ios_backup
