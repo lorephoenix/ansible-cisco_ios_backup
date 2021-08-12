@@ -1,0 +1,37 @@
+---
+# tasks file for ansible-cisco_ios_backup
+#
+#  ████████╗ █████╗ ███████╗██╗  ██╗
+#  ╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
+#     ██║   ███████║███████╗█████╔╝ 
+#     ██║   ██╔══██║╚════██║██╔═██╗ 
+#     ██║   ██║  ██║███████║██║  ██╗
+#     ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+#
+
+- name: main | Gathering Facts
+  cisco.ios.ios_facts:
+    gather_subset: hardware
+  tags:
+    - backup
+    - facts
+
+- name: main | Asserts
+  ansible.builtin.assert:
+    that:
+       - ( ansible_net_iostype|upper == "IOS" 
+              or ansible_net_iostype|upper == "IOS-XE" )
+    fail_msg: "{{ inventory_hostname }} isn't running the software type IOS 
+                    or IOS-XE but running {{ ansible_net_iostype|upper }}"
+    success_msg: "{{ inventory_hostname }} is running the software 
+                    '{{ ansible_net_iostype|upper }}'"
+    quiet: true
+  tags:
+    - backup
+
+#------------------------------------------------------------------------------
+# Load the task if the device to backup device configuration.
+#------------------------------------------------------------------------------
+- ansible.builtin.include_tasks: 'backup.yml'
+  tags:
+    - backup

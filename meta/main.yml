@@ -1,0 +1,36 @@
+---
+# meta file for ansible-cisco_ios_backup
+
+# ███╗   ███╗███████╗████████╗ █████╗ 
+# ████╗ ████║██╔════╝╚══██╔══╝██╔══██╗
+# ██╔████╔██║█████╗     ██║   ███████║
+# ██║╚██╔╝██║██╔══╝     ██║   ██╔══██║
+# ██║ ╚═╝ ██║███████╗   ██║   ██║  ██║
+# ╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝
+
+collections:
+  - ansible.netcommon
+  - cisco.ios
+dependencies: []
+galaxy_info:
+  author: Christophe Vermeren
+  description: Configuration backup on Cisco IOS/IOS-XE software devices.
+  company: 
+  license: GPLv3
+  min_ansible_version: 2.9
+  platforms:
+    - name: IOS
+      versions:
+        - 12
+        - 15
+    - name: IOS-XE
+      versions:
+        - 3
+        - 16
+        - 17
+  galaxy_tags: 
+    - cisco
+    - ios
+    - ios-xe
+    - configuration
+    - backup
